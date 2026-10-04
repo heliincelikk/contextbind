@@ -61,7 +61,7 @@
 
 ## GIT
 - **Branch:** `main`
-- **Initial Baseline Commit Hash:** Generated upon staging and committing P0 assets.
+- **Initial Baseline Commit Hash:** `975a6370c6904e2af4bb406193ad21614eecdb7f`
 
 ---
 

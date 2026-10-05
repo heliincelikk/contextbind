@@ -237,8 +237,8 @@ class OracleTemporalVerifier:
                 claimed_val = pred.get("claimed_value")
                 true_latest_val = latest_obs_map.get((pid, code))
 
-                if true_latest_val is None:
-                    results.append(("HOLD", "No eligible observations found for code."))
+                if true_latest_val is None or claimed_val is None:
+                    results.append(("HOLD", "Missing eligible observation or claimed value."))
                     continue
 
                 if abs(true_latest_val - claimed_val) < 1e-5:

@@ -81,5 +81,5 @@ Proceed with building the generator for $T1, T2,$ and $T3$ under frozen specific
 ---
 
 ## GIT
-- **Commit:** *(Recorded upon final commit of P3 artifacts)*
+- **Commit:** `0ba16fdcb38def568e4e8ab6120a1aec9c549c07`
 - **Clean Tree:** YES

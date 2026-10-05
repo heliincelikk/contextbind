@@ -1,0 +1,13 @@
+Metric,Value,Description
+Total Patient Bundles,575,Parsed patient FHIR JSON bundles
+Total Patients Extracted,575,Unique patient primary records
+Patient Coverage,100.0%,All bundles resolved to canonical patient
+Total Encounters,30594,Extracted encounter episodes
+Total Observations,277160,Extracted clinical observations
+Total MedicationRequests,27287,Extracted medication orders
+Total Conditions,20615,Extracted condition records
+Total Provenance,575,Extracted provenance audit records
+Parse Failures,0,Zero JSON/schema parse errors
+Orphan Observations,0,Observations without known encounter ID in bundle
+Orphan Medications,0,Medications without known encounter ID in bundle
+Post-Death Events,140,Events timestamped after deceasedDateTime

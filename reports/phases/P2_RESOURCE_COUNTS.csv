@@ -1,0 +1,8 @@
+Table/ResourceType,RecordCount,Percentage
+Patients,575,0.16%
+Encounters,30594,8.57%
+Observations,277160,77.68%
+Medication_requests,27287,7.65%
+Conditions,20615,5.78%
+Provenance,575,0.16%
+Timeline_Events (Total),335041,100.0%

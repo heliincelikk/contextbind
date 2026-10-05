@@ -1,0 +1,48 @@
+{
+  "dataset_name": "Synthea 500-Patient Cohort (Massachusetts)",
+  "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+  "generation_command": "run_synthea.bat -s 20261004 -r 20261004 -p 500 --exporter.fhir.export=true --exporter.fhir.bulk_data=false --exporter.csv.export=false --exporter.ccda.export=false Massachusetts",
+  "seed": "20261004",
+  "reference_date": "20261004",
+  "requested_population": 500,
+  "actual_patient_count": 575,
+  "alive_count": 500,
+  "deceased_count": 75,
+  "generation_timestamp": "2026-10-05T09:15:41.177624+00:00",
+  "total_raw_files": 577,
+  "patient_bundle_files": 575,
+  "resource_counts": {
+    "patients": 575,
+    "encounters": 30594,
+    "observations": 277160,
+    "medication_requests": 27287,
+    "conditions": 20615,
+    "provenance": 575,
+    "timeline_events": 335041
+  },
+  "anomalies": {
+    "post_death_events": 140,
+    "orphan_observations": 0,
+    "orphan_medications": 0,
+    "parse_errors": 0
+  },
+  "eligibility_summary": {
+    "observation_eligibility": {
+      "total_patient_code_groups": 24534,
+      "ge_2_points_t1_candidates": 20109,
+      "ge_3_points": 14769,
+      "ge_5_points": 11348,
+      "ge_10_points": 7665,
+      "numeric_longitudinal_groups": 17544
+    },
+    "t2_candidate_patients": 575,
+    "t3_candidate_patients": 575,
+    "medication_semantics": {
+      "status_distribution": {
+        "active": 1479,
+        "completed": 25808
+      },
+      "repeated_order_chains": 883
+    }
+  }
+}

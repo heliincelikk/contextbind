@@ -64,7 +64,8 @@
 - **Encounter coverage:** 100.0% (2,933 / 2,933)
 - **AuthoredOn coverage:** 100.0% (2,933 / 2,933)
 - **Medication Concept/Code Extractable:** 100.0% (2,933 / 2,933)
-- **Repeated medication timelines:** 49 distinct `(patient_id, medication_code)` longitudinal chains exhibiting chronological order sequences spanning multiple years (e.g. 2016–2026), demonstrating clear transitions from historical `completed` orders to newer/active states.
+- **Repeated medication timelines:** 49 distinct `(patient_id, medication_code)` longitudinal chains exhibiting repeated longitudinal MedicationRequest sequences containing completed and active requests spanning multiple years (e.g. 2016–2026).
+- **Medication Semantic Limitation:** FHIR `MedicationRequest.completed` must not be interpreted as equivalent to medication stopped/discontinued.
 
 ---
 
@@ -93,24 +94,24 @@
 ## TEMPORAL FEASIBILITY
 
 ### T1 — Stale-State Replay: **YES**
-- **Evidence:** 49 longitudinal medication trajectories showing historical `completed` prescriptions followed by newer renewals/active states, alongside 942 longitudinal observation tracks with $\ge 2$ measurements (684 with $\ge 3$). This provides dense temporal state histories for constructing natural superseded-state attacks.
+- **Evidence:** 942 longitudinal observation tracks with $\ge 2$ measurements (684 with $\ge 3$) providing dense continuous longitudinal state histories, alongside 49 repeated longitudinal MedicationRequest series.
 
 ### T2 — Wrong Encounter: **YES**
 - **Evidence:** 100.0% of patients have $\ge 3$ distinct clinical encounters (mean 88.5 per patient), with 100.0% encounter reference binding across all MedicationRequest and Observation resources.
 
 ### T3 — Mixed-Time Context: **YES**
-- **Evidence:** Over 54,000 structured clinical resources distributed across well-defined timeline intervals allow rich, controlled mixing of active encounter resources with superseded historical events in single evidence bundles.
+- **Evidence:** Over 54,000 structured clinical resources distributed across well-defined timeline intervals allow rich, controlled mixing of active encounter resources with historical events in single evidence bundles.
 
 ---
 
 ## P1 DATA FEASIBILITY VERDICT
 
-- **Medication-based T1 feasible:** **YES** (49 distinct longitudinal medication series with state progressions across encounters)
-- **Observation-based T1 feasible:** **YES** (942 distinct longitudinal observation groups with dense timestamp histories)
+- **Medication-based T1 feasible:** **YES (Secondary exploratory)** (49 distinct longitudinal medication series; however `completed` is not interpreted as stopped/discontinued)
+- **Observation-based T1 feasible:** **YES (Primary signal)** (942 distinct longitudinal observation groups with dense timestamp histories)
 - **T2 multi-encounter feasible:** **YES** (100% multi-encounter cohort; mean 88.5 encounters/patient)
 - **T3 mixed-time feasible:** **YES** (Dense multi-resource timeline topology per patient)
-- **Best primary signal for ContextBind:** **DUAL (MedicationRequest + Observation)** (MedicationRequest provides explicit `completed`/`active` discrete state transitions; Observation provides continuous high-density longitudinal state trajectory checks).
-- **Biggest data limitation:** In Synthea FHIR R4 exporter, superseded medications are represented as `completed` rather than `stopped`. The timeline engine must track chronological `authoredOn` sequence and encounter binding rather than expecting literal `stopped` strings.
+- **Best primary signal for ContextBind:** **OBSERVATION** (Observation provides continuous high-density longitudinal state trajectory checks; MedicationRequest serves as secondary exploratory signal).
+- **Biggest data limitation:** In Synthea FHIR R4 exporter, `MedicationRequest.completed` must NOT be interpreted as equivalent to medication stopped/discontinued.
 - **Recommendation:** **GO**
 
 ---

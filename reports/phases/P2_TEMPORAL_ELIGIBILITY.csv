@@ -1,0 +1,9 @@
+Eligibility Dimension,Count,Description
+"Total (Patient, Code) Groups",24534,Unique patient-observation trajectory series
+T1 Candidates (>=2 distinct timestamps),20109,Series suitable for superseded-state T1 replay
+Longitudinal Series (>=3 timestamps),14769,Dense longitudinal measurement tracks
+Longitudinal Series (>=5 timestamps),11348,High-density longitudinal tracks
+Longitudinal Series (>=10 timestamps),7665,Extensive lifetime longitudinal tracks
+Numeric Longitudinal Groups,17544,Quantitative observation trajectories with numeric values
+T2 Candidates (Patients with >=2 Encounters),575,Patients having >=2 distinct encounters with observations
+T3 Candidates (Mixed-Time Pool Patients),575,"Patients with multi-encounter, multi-code recurrent history"

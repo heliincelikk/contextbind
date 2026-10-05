@@ -1,0 +1,4 @@
+Medication Status / Property,Count,Semantic Rule
+active,1479,Active prescription order
+completed,25808,Standard completed order; must NOT be interpreted as discontinued/stopped
+"Repeated (Patient, MedCode) Order Chains",883,Longitudinal medication request sequences across encounters

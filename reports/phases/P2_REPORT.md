@@ -106,5 +106,5 @@
 ---
 
 ## GIT
-- **Commit:** *(Recorded upon final commit of P2 artifacts)*
+- **Commit:** `956ec10339e32b2e014cbd551f2c69dedf52f1ff`
 - **Clean Tree:** YES (Raw FHIR files and SQLite interim database strictly excluded via `.gitignore`)

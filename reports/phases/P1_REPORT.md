@@ -147,7 +147,7 @@
 
 ## GIT
 - **Branch:** `main`
-- **Commit Hash:** *(Recorded upon final commit of P1 artifacts)*
+- **Commit Hash:** `30f318bd07de930df37ad9177ab55dd74af75040`
 - **Clean Working Tree:** YES (Raw FHIR data and external tool folders excluded via `.gitignore`)
 
 ---

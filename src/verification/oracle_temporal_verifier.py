@@ -5,7 +5,7 @@ Strictly uses Python Standard Library.
 """
 
 import sqlite3
-from typing import Dict, Any, Tuple
+from typing import Dict, Any, Tuple, List, Optional
 
 class OracleTemporalVerifier:
     def __init__(self, db_path: str):

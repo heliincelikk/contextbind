@@ -67,5 +67,5 @@ The reframing completely eliminates the risk of deterministic baseline trivializ
 ---
 
 ## GIT
-- **Commit:** *(Recorded upon final commit of P3.5 artifacts)*
+- **Commit:** `58e110baf8803bd7d673398a7382e0ad7c1f4eb3`
 - **Clean Tree:** YES

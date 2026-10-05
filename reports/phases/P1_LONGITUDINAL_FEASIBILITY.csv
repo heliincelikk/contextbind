@@ -1,0 +1,18 @@
+Metric,Value,Description
+Total Patients Generated,24,Unique patient IDs in cohort
+Patients with >=2 Encounters,24,100.0% of cohort
+Patients with >=3 Encounters,24,100.0% of cohort
+Encounter Count Min,11,Min encounters per patient
+Encounter Count Median,40.5,Median encounters per patient
+Encounter Count Mean,88.5,Mean encounters per patient
+Encounter Count Max,598,Max encounters per patient
+Encounter Start Coverage,100.0%,2125/2125
+Encounter End Coverage,100.0%,2125/2125
+Medication Subject Coverage,100.0%,2933/2933
+Medication Encounter Coverage,100.0%,2933/2933
+Medication AuthoredOn Coverage,100.0%,2933/2933
+Medication Repeated Code Groups,49,Pairs/sequences of same medication per patient
+Observation EffectiveDate Coverage,100.0%,21949/21949
+Observation Encounter Coverage,100.0%,21949/21949
+Observation Groups with >=2 Points,942,"Total (patient, obs_code) with >=2 points"
+Observation Groups with >=3 Points,684,"Total (patient, obs_code) with >=3 points"

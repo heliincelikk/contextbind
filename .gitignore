@@ -33,8 +33,7 @@ data/processed/*
 external/synthea/output/
 
 # External cloned tools
-external/synthea/build/
-external/synthea/.gradle/
+external/
 
 # IDE / OS
 .vscode/

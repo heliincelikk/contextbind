@@ -1,0 +1,4 @@
+Partition,Patients,Alive,Deceased,MedianEncounters,MedianObservations,EligibleLongitudinalObsGroups
+TRAIN,345,300,45,37,166,12378
+VALIDATION,115,101,14,33,163,3743
+TEST,115,99,16,38,160,3988

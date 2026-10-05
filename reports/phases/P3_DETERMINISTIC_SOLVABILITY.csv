@@ -1,0 +1,4 @@
+Attack,ObjectiveGroundTruthAvailable,ExplicitMetadataSufficientToSolve,NewerSameCodeRuleSufficient,EncounterEqualitySufficient,TimestampOrderingSufficient,MLTheoreticallyNecessary,PrimaryReason
+T1 - Stale Observation Replay,YES,YES,YES,NO,YES,NO,Chronological timestamp comparison and newer-same-code query deterministically identify superseded observations with 100% precision.
+T2 - Wrong Encounter Evidence,YES,YES,NO,YES,NO,NO,Explicit encounter reference equality (observation.encounter == target_encounter) deterministically resolves foreign-episode transpositions.
+T3 - Mixed-Time Context Bundle,YES,YES,YES,YES,YES,NO (Under Perfect Metadata) / UNCLEAR (Under Degraded Metadata),Under complete Synthea metadata B1 per-element checks resolve mixed bundles. ML is only theoretically advantageous when encounter/temporal linkages are unindexed or noisy.

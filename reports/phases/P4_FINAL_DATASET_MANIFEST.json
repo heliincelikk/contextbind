@@ -1,0 +1,133 @@
+{
+  "dataset_name": "ContextBind_Curated_Temporal_Claims_P4",
+  "seed": 20261004,
+  "splits": {
+    "train": {
+      "file": "data/processed/p4_final_train.jsonl",
+      "count": 19128
+    },
+    "val_id": {
+      "file": "data/processed/p4_final_val_id.jsonl",
+      "count": 5878
+    },
+    "val_ood": {
+      "file": "data/processed/p4_final_val_ood.jsonl",
+      "count": 4956
+    }
+  },
+  "total_claims": 29962,
+  "grammar_violations": {
+    "an_decreasing": 0,
+    "a_increasing": 0,
+    "an_stable": 0
+  },
+  "diversity_summary": [
+    {
+      "task_code": "S1",
+      "pairs": 4000,
+      "claims": 8000,
+      "unique_patients": 421,
+      "unique_concepts": 106,
+      "supported": 4000,
+      "contradicted": 4000,
+      "max_patient_contrib_claims": 148,
+      "max_patient_contrib_pct": "1.85%",
+      "max_patient_concept_contrib_claims": 10,
+      "max_patient_concept_contrib_pct": "0.12%",
+      "template_families": {
+        "S1_TF1_ACTIVE": 2160,
+        "S1_TF3_COURSE": 2196,
+        "S1_TF2_TRAJECTORY": 2144,
+        "S1_TF4_PASSIVE_HELD_OUT": 1500
+      }
+    },
+    {
+      "task_code": "S2",
+      "pairs": 2981,
+      "claims": 5962,
+      "unique_patients": 460,
+      "unique_concepts": 594,
+      "supported": 2981,
+      "contradicted": 2981,
+      "max_patient_contrib_claims": 16,
+      "max_patient_contrib_pct": "0.27%",
+      "max_patient_concept_contrib_claims": 8,
+      "max_patient_concept_contrib_pct": "0.13%",
+      "template_families": {
+        "S2_TF1_STANDARD": 1824,
+        "S2_TF2_SEQUENCE": 1872,
+        "S2_TF3_DOCUMENTATION": 1810,
+        "S2_TF4_CLAUSAL_HELD_OUT": 456
+      }
+    },
+    {
+      "task_code": "S3",
+      "pairs": 4000,
+      "claims": 8000,
+      "unique_patients": 452,
+      "unique_concepts": 116,
+      "supported": 4000,
+      "contradicted": 4000,
+      "max_patient_contrib_claims": 92,
+      "max_patient_contrib_pct": "1.15%",
+      "max_patient_concept_contrib_claims": 8,
+      "max_patient_concept_contrib_pct": "0.10%",
+      "template_families": {
+        "S3_TF1_COMPARATIVE_ADJ": 2134,
+        "S3_TF3_ENCOUNTER_SHIFT": 2226,
+        "S3_TF2_EXCEEDS_FALLS": 2140,
+        "S3_TF4_MAGNITUDE_HELD_OUT": 1500
+      }
+    },
+    {
+      "task_code": "S4",
+      "pairs": 4000,
+      "claims": 8000,
+      "unique_patients": 450,
+      "unique_concepts": 114,
+      "supported": 4000,
+      "contradicted": 4000,
+      "max_patient_contrib_claims": 106,
+      "max_patient_contrib_pct": "1.32%",
+      "max_patient_concept_contrib_claims": 10,
+      "max_patient_concept_contrib_pct": "0.12%",
+      "template_families": {
+        "S4_TF1_DIRECT_CURRENT": 2210,
+        "S4_TF2_MOST_RECENT": 2082,
+        "S4_TF3_RECORDED_FINDING": 2208,
+        "S4_TF4_ACTIVE_STATE_HELD_OUT": 1500
+      }
+    },
+    {
+      "task_code": "OVERALL",
+      "pairs": 14981,
+      "claims": 29962,
+      "unique_patients": 460,
+      "unique_concepts": 718,
+      "supported": 14981,
+      "contradicted": 14981,
+      "max_patient_contrib_claims": 354,
+      "max_patient_contrib_pct": "1.18%",
+      "max_patient_concept_contrib_claims": 16,
+      "max_patient_concept_contrib_pct": "0.05%",
+      "template_families": {
+        "S1_TF1_ACTIVE": 2160,
+        "S1_TF3_COURSE": 2196,
+        "S1_TF2_TRAJECTORY": 2144,
+        "S2_TF1_STANDARD": 1824,
+        "S2_TF2_SEQUENCE": 1872,
+        "S2_TF3_DOCUMENTATION": 1810,
+        "S3_TF1_COMPARATIVE_ADJ": 2134,
+        "S3_TF3_ENCOUNTER_SHIFT": 2226,
+        "S3_TF2_EXCEEDS_FALLS": 2140,
+        "S4_TF1_DIRECT_CURRENT": 2210,
+        "S4_TF2_MOST_RECENT": 2082,
+        "S4_TF3_RECORDED_FINDING": 2208,
+        "S1_TF4_PASSIVE_HELD_OUT": 1500,
+        "S2_TF4_CLAUSAL_HELD_OUT": 456,
+        "S3_TF4_MAGNITUDE_HELD_OUT": 1500,
+        "S4_TF4_ACTIVE_STATE_HELD_OUT": 1500
+      }
+    }
+  ]
+}

@@ -21,9 +21,17 @@ ContextBind builds upon and differentiates itself from five distinct subfields i
 
 ## 2. Core Defensible Scientific Contribution
 
-ContextBind does not claim to invent generic clinical fact checking or patient matching. Its precise scientific contribution is:
+ContextBind does not claim to invent generic clinical fact checking, entity resolution, or temporal QA benchmarks. Its precise scientific contribution is:
 
-> **Core Contribution:** A neuro-symbolic pre-action runtime interlock that binds natural-language clinical justifications to source-verifiable longitudinal temporal evidence in structured FHIR repositories before consequential agent tool executions are released.
+> **Core Contribution:** Source-verifiable temporal claim binding at the clinical tool-execution boundary (a pre-action runtime interlock enforcing verifiable longitudinal evidence before autonomous agent tool calls execute).
+
+### 2.1 Adjacent Fields & Specific Boundaries
+- **Source-Grounded Clinical Proposition Extraction:** Extracting verifiable propositions from clinical text.
+- **Clinical Factuality Verification:** Post-hoc summarization consistency checking.
+- **Longitudinal Temporal Reasoning Benchmarks:** Passive QA benchmarks (e.g. TIMER, LongMedBench, ClinTraceBench).
+- **Generic Pre-Action Agent Verification / Gating:** General tool call security middleware.
+
+**Prior-Art Differentiation:** **MODERATE–STRONG, pending implementation-level comparison** (Differentiated specifically by combining semantic claim parsing with deterministic longitudinal FHIR verification at the pre-action tool call enforcement boundary).
 
 ---
 

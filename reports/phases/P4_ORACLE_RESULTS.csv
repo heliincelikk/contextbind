@@ -1,0 +1,6 @@
+task_code,total_claims,correct_verifications,incorrect_verifications,accuracy,runtime_seconds
+S1,8000,8000,0,1.0000,5.62
+S2,5962,5962,0,1.0000,5.62
+S3,8000,8000,0,1.0000,5.62
+S4,8000,8000,0,1.0000,5.62
+OVERALL,29962,29962,0,1.0000,5.62

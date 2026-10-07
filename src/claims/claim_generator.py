@@ -28,7 +28,7 @@ class TemporalClaimGenerator:
             
         self.train_pids = set(self.split_data["train_patient_ids"])
         self.val_pids = set(self.split_data["val_patient_ids"])
-        # Note: self.split_data["test_patient_ids"] is strictly embargoed and NEVER loaded
+        self.test_pids = set(self.split_data.get("test_patient_ids", []))
 
     def _connect(self):
         return sqlite3.connect(self.db_path)

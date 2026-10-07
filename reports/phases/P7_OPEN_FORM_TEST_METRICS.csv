@@ -1,0 +1,4 @@
+Pipeline,Exact Match (%),Coverage (%),HOLD Rate (%),Selective Acc (%),Utility Acc (%),UAR (%),BABR (%),Pair Consist (%)
+B_RULE (Fast-Path),0.0,47.4,52.6,87.34,41.4,4.6,7.4,35.4
+Semantic AI Alone,0.0,73.7,26.3,88.06,64.9,6.6,11.0,55.4
+Final Gated Hybrid (tau=0.70),0.0,47.4,52.6,87.34,41.4,4.6,7.4,35.4

@@ -1,0 +1,4 @@
+Split Seed,Claims N,Hybrid Coverage (%),UAR (%),BABR (%),Utility Acc (%),Pair Consistency (%)
+Primary (20261004),1000,47.4,4.6,7.4,41.4,35.4
+Robustness Seed 20261005,1000,48.6,4.4,6.6,43.1,37.6
+Robustness Seed 20261006,1000,48.4,3.8,6.2,43.4,38.2

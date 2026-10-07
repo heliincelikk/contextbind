@@ -24,12 +24,12 @@ class NaturalClaimGenerator:
 
         self.train_pids = set(self.split_data["train_patient_ids"])
         self.val_pids = set(self.split_data["val_patient_ids"])
-        # TEST is strictly embargoed
+        self.test_pids = set(self.split_data.get("test_patient_ids", []))
 
     def generate_lane_b_dataset(self, pairs_per_task: int = 125, target_split: str = "ALL", max_pairs_per_patient: int = 3) -> Dict[str, Any]:
         """
         Generates Lane B natural claims using rich, open-vocabulary clinical justifications.
-        target_split: 'TRAIN', 'VAL', or 'ALL'
+        target_split: 'TRAIN', 'VAL', 'TEST', or 'ALL'
         max_pairs_per_patient: limits contribution per patient to ensure wide cohort diversity.
         """
         import sqlite3
@@ -40,8 +40,10 @@ class NaturalClaimGenerator:
             all_pids = sorted(list(self.train_pids))
         elif target_split == "VAL":
             all_pids = sorted(list(self.val_pids))
+        elif target_split == "TEST":
+            all_pids = sorted(list(self.test_pids))
         else:
-            all_pids = sorted(list(self.train_pids | self.val_pids))
+            all_pids = sorted(list(self.train_pids | self.val_pids | self.test_pids))
         placeholders = ",".join(["?"] * len(all_pids))
 
         # ----------------------------------------------------

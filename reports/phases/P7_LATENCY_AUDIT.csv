@@ -1,0 +1,2 @@
+N,P50 (ms),P95 (ms),P99 (ms),Max (ms),Outliers > 1000ms,Primary Outlier Cause
+100,218.16,259.2,592.88,686.89,0,Python GIL / Windows SQLite file-lock synchronization during cold thread initialization

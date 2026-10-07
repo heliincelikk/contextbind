@@ -1,0 +1,23 @@
+{
+  "phase": "P7_LOCKED_SYSTEM_MANIFEST",
+  "timestamp": "2026-10-07T22:24:00Z",
+  "status": "FROZEN_BEFORE_TEST_EMBARGO_LIFT",
+  "confidence_threshold_tau": 0.7,
+  "model_name": "distilbert/distilbert-base-uncased",
+  "primary_seed": 20261004,
+  "robustness_seeds": [
+    20261005,
+    20261006
+  ],
+  "component_sha256": {
+    "src/binder/rule_binder.py": "66ac9d596b81aa10662a03b4ce80f0dd304eb15d91fa3c8aec918e5b854ed0d4",
+    "artifacts/frozen/rule_binder.json": "bcbf5bca92b71622df19e3b909bd11e23ec19ad5b6d040aeeb61e24aa304bfcd",
+    "src/binder/semantic_ai_binder.py": "03be46c30eb82d15c7594bf69eaf757c2c5c7d6f787c35fc055d2384d30541e7",
+    "artifacts/frozen/semantic_ai_binder.pkl": "db63468c9b4933edfbb693eba382880ac26515f01aac8c879ab298a6a90d338d",
+    "src/verification/oracle_temporal_verifier.py": "adf3f088a0597e08d825cad7f3aac391ab4ad0b2c7a6000552e4cf5bca1dc699",
+    "src/runtime/contextbind_runtime.py": "c8e9f00798067fa968320c41fab3eaac0b718e60b888834e586c95b46092813b",
+    "src/runtime/guarded_executor.py": "fd2e2c69505ba8bfc2a1cf51f3fe6695bea9bd7fb85de234cffd3d8c574a40a0",
+    "src/claims/claim_generator.py": "5f1bab4c46f81c1bac8eb851294e15d1ceb9eed91c0cc2bdc4df0fad62f8575c",
+    "src/claims/natural_claim_generator.py": "b783d0eab3e372dd1fe426508d11e544ab54c1d3ef3ed6521059ee1b61a54261"
+  }
+}

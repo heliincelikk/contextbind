@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ContextBind — Pre-Action Runtime Clinical Safety Interlock</title>
+  <meta name="description" content="ContextBind binds clinical AI agent claims to verifiable longitudinal EHR evidence before consequential tools execute.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1 class="brand-title">ContextBind</h1>
+            <span class="badge-tag">RUNTIME INTERLOCK</span>
+          </div>
+          <p class="brand-tagline">Right patient. Right context. Right time. Before action.</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="scenario-selector-wrap">
+          <label for="scenarioSelect">Scenario Preset:</label>
+          <select id="scenarioSelect" class="styled-select">
+            <option value="D1">D1 — Rule PASS (Cholesterol LDL Drop Verified)</option>
+            <option value="D2">D2 — Rule BLOCK (Contradictory LDL Increase Claim)</option>
+            <option value="D3">D3 — AI Fallback PASS (Serum Calcium Elevation Verified)</option>
+            <option value="D4">D4 — AI Fallback BLOCK (Contradictory Calcium Drop Claim)</option>
+            <option value="D5">D5 — Uncertain Semantic Claim (Fail-Closed HOLD)</option>
+            <option value="GUARD_DEMO_OFF">Guard OFF Demo (Flawed Calcium Draft Committed)</option>
+            <option value="GUARD_DEMO_ON">Guard ON Demo (Same Flawed Draft Intercepted & Blocked)</option>
+          </select>
+        </div>
+
+        <div class="guard-toggle-wrap">
+          <span class="toggle-label">Runtime Guard:</span>
+          <label class="switch">
+            <input type="checkbox" id="guardToggle" checked>
+            <span class="slider round"></span>
+          </label>
+          <span id="guardStatusText" class="guard-status-badge guard-active">GUARD ACTIVE</span>
+        </div>
+
+        <button id="btnRunInterlock" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Evaluate & Execute
+        </button>
+      </div>
+    </header>
+
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer-bar">
+      <span class="disclaimer-icon">⚠️</span>
+      <span class="disclaimer-text"><strong>Research prototype.</strong> Not for clinical use or autonomous medical decision-making. Pre-action safety interlock verification demonstration.</span>
+    </div>
+
+    <!-- Main 3-Pane Layout -->
+    <main class="three-pane-container">
+      <!-- PANE 1: Patient Longitudinal Timeline -->
+      <section class="pane pane-timeline" id="paneTimeline">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <span class="pane-number">01</span>
+            <h2>Longitudinal EHR Timeline</h2>
+          </div>
+          <span class="patient-id-badge" id="patientBadge">Patient: 001cc5e4...</span>
+        </div>
+        <div class="pane-content">
+          <div class="patient-meta-card">
+            <div class="meta-row">
+              <span class="meta-label">Patient ID:</span>
+              <span class="meta-val font-mono" id="txtPatientId">001cc5e4-71a3-8e4c-507c-d39178b49be8</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Total Observations:</span>
+              <span class="meta-val" id="txtObsCount">32 longitudinal events</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Primary Encounter:</span>
+              <span class="meta-val">Outpatient Longitudinal Cohort</span>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Authoritative FHIR Observations</h3>
+          <div class="timeline-table-wrap">
+            <table class="timeline-table" id="timelineTable">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Clinical Concept</th>
+                  <th>Value</th>
+                  <th>Unit</th>
+                  <th>Resource ID</th>
+                </tr>
+              </thead>
+              <tbody id="timelineTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANE 2: Agent Proposed Action -->
+      <section class="pane pane-action" id="paneAction">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <span class="pane-number">02</span>
+            <h2>Agent Proposed Action</h2>
+          </div>
+          <span class="action-type-badge" id="actionTypeBadge">CLINICAL_NOTE_UPDATE</span>
+        </div>
+        <div class="pane-content">
+          <div class="form-group">
+            <label for="inputClaimText" class="field-label">Natural Language Justification / Asserted Claim:</label>
+            <textarea id="inputClaimText" class="styled-textarea" rows="4" placeholder="Enter clinical assertion asserted by AI Agent..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="inputProposedTool" class="field-label">Consequential Tool:</label>
+              <input type="text" id="inputProposedTool" class="styled-input font-mono" value="update_patient_note" readonly>
+            </div>
+            <div class="form-group flex-1">
+              <label for="inputActionType" class="field-label">Action Category:</label>
+              <input type="text" id="inputActionType" class="styled-input" value="CLINICAL_NOTE_UPDATE" readonly>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputToolPayload" class="field-label">Consequential Tool Call Payload (JSON):</label>
+            <textarea id="inputToolPayload" class="styled-textarea font-mono" rows="6" spellcheck="false"></textarea>
+          </div>
+
+          <div class="agent-intent-box">
+            <div class="intent-title">Agent Intent & Consequence:</div>
+            <p id="txtAgentIntent">The agent intends to commit a medical progress note to the EHR based on its temporal interpretation of the longitudinal timeline.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANE 3: ContextBind Decision Engine -->
+      <section class="pane pane-decision" id="paneDecision">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <span class="pane-number">03</span>
+            <h2>ContextBind Decision Engine</h2>
+          </div>
+          <span class="interlock-live-badge">INTERLOCK ACTIVE</span>
+        </div>
+        <div class="pane-content">
+          <!-- Big Verdict Hero Banner -->
+          <div class="verdict-banner verdict-idle" id="verdictBanner">
+            <div class="verdict-icon-wrap" id="verdictIcon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="verdict-text-group">
+              <div class="verdict-sub">PRE-ACTION INTERLOCK VERDICT</div>
+              <div class="verdict-title" id="verdictTitle">READY FOR EVALUATION</div>
+            </div>
+            <div class="execution-chip-wrap">
+              <span class="exec-chip" id="execChip">TOOL: IDLE</span>
+            </div>
+          </div>
+
+          <!-- Semantic Route & Confidence -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-lbl">Semantic Route</div>
+              <div class="metric-val font-mono" id="valRoute">—</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-lbl">Parser Confidence</div>
+              <div class="metric-val font-mono" id="valConfidence">—</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-lbl">Execution Allowed</div>
+              <div class="metric-val font-mono" id="valAllowed">—</div>
+            </div>
+          </div>
+
+          <!-- Structured Predicate Extraction -->
+          <div class="inspection-card">
+            <div class="inspection-header">
+              <span class="card-icon">🧩</span>
+              <h4>Extracted Structured Predicate</h4>
+            </div>
+            <pre class="code-block" id="codePredicate">// Run evaluation to extract structured temporal predicate</pre>
+          </div>
+
+          <!-- Symbolic Timeline Evidence & Verification -->
+          <div class="inspection-card">
+            <div class="inspection-header">
+              <span class="card-icon">🔍</span>
+              <h4>Longitudinal Ground-Truth Evidence</h4>
+            </div>
+            <div class="evidence-list" id="evidenceList">
+              <div class="evidence-placeholder">Evidence matching predicate will be displayed here...</div>
+            </div>
+          </div>
+
+          <!-- Symbolic Verifier Explanation -->
+          <div class="inspection-card">
+            <div class="inspection-header">
+              <span class="card-icon">⚖️</span>
+              <h4>Symbolic Verifier Mathematical Result</h4>
+            </div>
+            <div class="verifier-explanation-box" id="txtVerifierResult">
+              Awaiting interlock evaluation.
+            </div>
+          </div>
+
+          <!-- Real Execution Side Effect Box -->
+          <div class="inspection-card side-effect-card">
+            <div class="inspection-header">
+              <span class="card-icon">⚡</span>
+              <h4>Observed Consequential Side Effect</h4>
+            </div>
+            <pre class="code-block side-effect-block" id="codeSideEffect">// Consequential tool execution response will appear here</pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div>ContextBind Clinical Safety Interlock Architecture • Phase P6 Runtime Prototype</div>
+      <div class="footer-links">
+        <span>Frozen Rule Fast-Path</span> • 
+        <span>DistilBERT Semantic Binder (τ = 0.70)</span> • 
+        <span>OracleTemporalVerifier</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

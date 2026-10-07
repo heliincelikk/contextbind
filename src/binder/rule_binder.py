@@ -16,6 +16,21 @@ class RuleBasedClaimBinder:
         # Sort concept strings by length descending for longest prefix matching
         self._sorted_concepts = sorted(self.concept_vocab.keys(), key=len, reverse=True)
 
+    def save(self, filepath: str):
+        """Saves rule concept vocabulary and mapping to disk."""
+        import json, os
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump({"concept_vocab": self.concept_vocab}, f, indent=2)
+
+    @classmethod
+    def load(cls, filepath: str) -> "RuleBasedClaimBinder":
+        """Loads rule concept vocabulary from disk with ZERO training."""
+        import json
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return cls(concept_vocab=data["concept_vocab"])
+
     def fit(self, train_claims: List[Dict[str, Any]]) -> "RuleBasedClaimBinder":
         """
         Builds concept vocabulary and display dictionaries strictly from training split.

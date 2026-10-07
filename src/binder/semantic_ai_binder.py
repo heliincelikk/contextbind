@@ -40,6 +40,45 @@ class SemanticAIBinder:
         self._sorted_concepts: List[str] = []
         self.is_fitted = False
 
+    def save(self, filepath: str):
+        """Saves frozen multi-task predicate heads and vocabulary to disk."""
+        import pickle
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        state = {
+            "model_name": self.model_name,
+            "seed": self.seed,
+            "confidence_threshold": self.confidence_threshold,
+            "task_clf": self.task_clf,
+            "claim_clf": self.claim_clf,
+            "comp_clf": self.comp_clf,
+            "window_clf": self.window_clf,
+            "concept_vocab": self.concept_vocab,
+            "_sorted_concepts": self._sorted_concepts,
+            "is_fitted": self.is_fitted
+        }
+        with open(filepath, "wb") as f:
+            pickle.dump(state, f)
+
+    @classmethod
+    def load(cls, filepath: str) -> "SemanticAIBinder":
+        """Loads frozen multi-task predicate heads and vocabulary from disk with ZERO training."""
+        import pickle
+        with open(filepath, "rb") as f:
+            state = pickle.load(f)
+        instance = cls(
+            model_name=state["model_name"],
+            seed=state["seed"],
+            confidence_threshold=state["confidence_threshold"]
+        )
+        instance.task_clf = state["task_clf"]
+        instance.claim_clf = state["claim_clf"]
+        instance.comp_clf = state["comp_clf"]
+        instance.window_clf = state["window_clf"]
+        instance.concept_vocab = state["concept_vocab"]
+        instance._sorted_concepts = state["_sorted_concepts"]
+        instance.is_fitted = state["is_fitted"]
+        return instance
+
     def _init_transformer(self):
         if self.tokenizer is None or self.encoder is None:
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)

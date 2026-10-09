@@ -1,0 +1,39 @@
+{
+  "manifest_name": "P7R_TEST_DATA_MANIFEST",
+  "created_at_utc": "2026-10-07T20:42:32.805289+00:00",
+  "provenance_statement": "The original P7 TEST claims were generated in-memory. They were later deterministically reconstructed after an evaluation-integrity bug was discovered, using the exact pre-TEST frozen generator hashes, patient split, sampling policy and RNG seed. No model, rule, threshold, template, label or sampling specification was modified after observing TEST results.",
+  "primary_seed": 20261004,
+  "patient_split_file": "configs/split_primary_20261004.json",
+  "artifacts": {
+    "controlled_test": {
+      "path": "data/processed/p7_test_controlled.jsonl",
+      "sha256": "aaf6f60ccfbf0de924405457bf3dcae87041f3d09050a942d0074478294d9e7b",
+      "record_count": 1000,
+      "unique_claim_ids": 1000,
+      "unique_patient_ids": 113,
+      "supported_count": 500,
+      "contradicted_count": 500,
+      "task_counts": {
+        "S1": 250,
+        "S2": 250,
+        "S3": 250,
+        "S4": 250
+      }
+    },
+    "open_form_test": {
+      "path": "data/processed/p7_test_open_form.jsonl",
+      "sha256": "3d9173a48e0e3ed684dc70b74c45228a1ae589a64f69aa92b02b321d4234bb64",
+      "record_count": 1000,
+      "unique_claim_ids": 1000,
+      "unique_patient_ids": 115,
+      "supported_count": 500,
+      "contradicted_count": 500,
+      "task_counts": {
+        "S1": 250,
+        "S2": 250,
+        "S3": 250,
+        "S4": 250
+      }
+    }
+  }
+}

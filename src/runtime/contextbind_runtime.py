@@ -138,6 +138,34 @@ class ContextBindRuntime:
 
         return evidence
 
+    @staticmethod
+    def adapt_predicate_for_verifier(predicate: Dict[str, Any], task_code: str) -> Dict[str, Any]:
+        """
+        Deterministic runtime adapter normalizing binder predicates to OracleTemporalVerifier schema.
+        Maps slot aliases and extracts canonical fields without altering scientific semantics.
+        """
+        if not predicate:
+            return {}
+        c_type = predicate.get("claim_type")
+        comp = predicate.get("comparator")
+        c_dir = predicate.get("claimed_direction")
+        if not c_dir:
+            if c_type == "TREND_INCREASING" or (comp == "GT" and task_code == "S1"):
+                c_dir = "INCREASING"
+            elif c_type == "TREND_DECREASING" or (comp == "LT" and task_code == "S1"):
+                c_dir = "DECREASING"
+
+        return {
+            "concept": predicate.get("clinical_concept") or predicate.get("concept"),
+            "claim_type": c_type,
+            "comparator": comp,
+            "window": predicate.get("temporal_window") or predicate.get("window"),
+            "claimed_direction": c_dir,
+            "claimed_value": predicate.get("claimed_value"),
+            "event_A_id": predicate.get("event_A_id"),
+            "event_B_id": predicate.get("event_B_id")
+        }
+
     def verify_action(self, request: Dict[str, Any]) -> Dict[str, Any]:
         """
         Main Runtime Interlock Contract:
@@ -297,16 +325,7 @@ class ContextBindRuntime:
             "task_code": task_code,
             "patient_id": patient_id,
             "claim_text": claim_text,
-            "structured_predicate": {
-                "concept": final_predicate.get("clinical_concept"),
-                "claim_type": final_predicate.get("claim_type"),
-                "comparator": final_predicate.get("comparator"),
-                "window": final_predicate.get("temporal_window"),
-                "claimed_direction": "INCREASING" if final_predicate.get("claim_type") == "TREND_INCREASING" else ("DECREASING" if final_predicate.get("claim_type") == "TREND_DECREASING" else None),
-                "claimed_value": final_predicate.get("claimed_value"),
-                "event_A_id": final_predicate.get("event_A_id"),
-                "event_B_id": final_predicate.get("event_B_id")
-            },
+            "structured_predicate": self.adapt_predicate_for_verifier(final_predicate, task_code),
             "source_event_ids": resolved_event_ids
         }
 

@@ -41,3 +41,4 @@ external/
 .DS_Store
 Thumbs.db
 *.log
+scratch/

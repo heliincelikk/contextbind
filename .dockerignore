@@ -1,0 +1,17 @@
+.git
+.gitignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.coverage
+htmlcov/
+env/
+venv/
+.venv/
+external/
+scratch/
+data/raw/
+data/processed/*.jsonl
+tests/

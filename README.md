@@ -1,3 +1,14 @@
+---
+title: ContextBind
+emoji: 🛡️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+short_description: Pre-Action Runtime Safety Interlock for Clinical AI Agents (Research Prototype)
+---
+
 # ContextBind
 
 **Pre-Action Runtime Safety Interlock for Clinical AI Agents**

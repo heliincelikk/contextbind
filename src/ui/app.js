@@ -14,6 +14,7 @@ const scenarioSelect = document.getElementById("scenarioSelect");
 const guardToggle = document.getElementById("guardToggle");
 const guardStatusText = document.getElementById("guardStatusText");
 const btnRunInterlock = document.getElementById("btnRunInterlock");
+const interlockHeaderBadge = document.getElementById("interlockHeaderBadge");
 
 const patientBadge = document.getElementById("patientBadge");
 const txtPatientId = document.getElementById("txtPatientId");
@@ -80,9 +81,17 @@ function updateGuardToggleUI() {
   if (isGuardOn) {
     guardStatusText.textContent = "GUARD ACTIVE";
     guardStatusText.className = "guard-status-badge guard-active";
+    if (interlockHeaderBadge) {
+      interlockHeaderBadge.textContent = "INTERLOCK ACTIVE";
+      interlockHeaderBadge.className = "interlock-live-badge";
+    }
   } else {
     guardStatusText.textContent = "GUARD BYPASSED (DEMO)";
     guardStatusText.className = "guard-status-badge guard-disabled";
+    if (interlockHeaderBadge) {
+      interlockHeaderBadge.textContent = "INTERLOCK BYPASSED";
+      interlockHeaderBadge.className = "interlock-live-badge interlock-bypassed-badge";
+    }
   }
 
   const sId = scenarioSelect.value;

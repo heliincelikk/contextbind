@@ -337,6 +337,13 @@ input:checked + .slider:before {
   background: rgba(16, 185, 129, 0.15);
   color: #34d399;
   border-color: rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+.interlock-live-badge.interlock-bypassed-badge {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .pane-content {

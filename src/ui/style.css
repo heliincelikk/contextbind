@@ -323,7 +323,7 @@ input:checked + .slider:before {
   letter-spacing: -0.2px;
 }
 
-.patient-id-badge, .action-type-badge, .interlock-live-badge {
+.patient-id-badge, .action-type-badge, .interlock-header-badge, .interlock-live-badge {
   font-size: 11px;
   font-weight: 600;
   padding: 3px 8px;
@@ -331,19 +331,27 @@ input:checked + .slider:before {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
-}
-
-.interlock-live-badge {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border-color: rgba(16, 185, 129, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.3px;
   transition: all 0.2s ease;
 }
 
-.interlock-live-badge.interlock-bypassed-badge {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border-color: rgba(239, 68, 68, 0.3);
+.interlock-header-badge.interlock-active,
+.interlock-live-badge:not(.interlock-bypassed):not(.interlock-bypassed-badge) {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+
+.interlock-header-badge.interlock-bypassed,
+.interlock-bypassed-badge,
+.interlock-live-badge.interlock-bypassed {
+  background: rgba(239, 68, 68, 0.18) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.45) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.12);
 }
 
 .pane-content {

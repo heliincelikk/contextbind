@@ -83,14 +83,14 @@ function updateGuardToggleUI() {
     guardStatusText.className = "guard-status-badge guard-active";
     if (interlockHeaderBadge) {
       interlockHeaderBadge.textContent = "INTERLOCK ACTIVE";
-      interlockHeaderBadge.className = "interlock-live-badge";
+      interlockHeaderBadge.className = "interlock-header-badge interlock-active";
     }
   } else {
     guardStatusText.textContent = "GUARD BYPASSED (DEMO)";
     guardStatusText.className = "guard-status-badge guard-disabled";
     if (interlockHeaderBadge) {
       interlockHeaderBadge.textContent = "INTERLOCK BYPASSED";
-      interlockHeaderBadge.className = "interlock-live-badge interlock-bypassed-badge";
+      interlockHeaderBadge.className = "interlock-header-badge interlock-bypassed";
     }
   }
 

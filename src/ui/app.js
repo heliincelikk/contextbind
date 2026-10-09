@@ -84,6 +84,31 @@ function updateGuardToggleUI() {
     guardStatusText.textContent = "GUARD BYPASSED (DEMO)";
     guardStatusText.className = "guard-status-badge guard-disabled";
   }
+
+  const sId = scenarioSelect.value;
+  const s = currentScenarios[sId];
+  if (s) {
+    updateAgentIntentCopy(s, isGuardOn);
+  }
+}
+
+function updateAgentIntentCopy(s, isGuardOn) {
+  if (!s) return;
+  if (s.id === "D4" || s.id === "GUARD_DEMO_OFF" || s.id === "GUARD_DEMO_ON") {
+    if (!isGuardOn) {
+      txtAgentIntent.textContent = "The agent asserts that serum calcium has dropped below prior levels to initiate emergency orders. ContextBind would verify this claim as contradicted by ground-truth FHIR evidence (9.82 is NOT < 8.84 mg/dL), but because the runtime interlock is bypassed (GUARD OFF), the consequential tool executes without verification.";
+    } else {
+      txtAgentIntent.textContent = "The agent asserts that serum calcium has dropped below prior levels to initiate emergency orders. With runtime interlock active (GUARD ON), ContextBind confidently structures the open-form claim via DistilBERT, verifies the comparative relation as false against ground-truth FHIR evidence (9.82 is NOT < 8.84 mg/dL), and strictly blocks consequential tool execution.";
+    }
+  } else if (s.id === "D2") {
+    if (!isGuardOn) {
+      txtAgentIntent.textContent = "The agent asserts that LDL cholesterol is rising. ContextBind would verify this claim as contradicted by ground-truth FHIR evidence (48.55 is NOT > 92.87 mg/dL), but because the runtime interlock is bypassed (GUARD OFF), the consequential tool executes without verification.";
+    } else {
+      txtAgentIntent.textContent = s.description || "The agent proposes a clinical tool call based on its clinical justification.";
+    }
+  } else {
+    txtAgentIntent.textContent = s.description || "The agent proposes a clinical tool call based on its clinical justification.";
+  }
 }
 
 function loadSelectedScenario() {
@@ -102,11 +127,11 @@ function loadSelectedScenario() {
 
   if (s.guard_enabled !== undefined) {
     guardToggle.checked = s.guard_enabled;
-    updateGuardToggleUI();
   }
+  updateGuardToggleUI();
 
-  // Update intent description
-  txtAgentIntent.textContent = s.description || "The agent proposes a clinical tool call based on its clinical justification.";
+  // Update intent description based on guard state
+  updateAgentIntentCopy(s, guardToggle.checked);
 
   // Reset decision pane to idle
   resetDecisionPane();
